@@ -1,7 +1,20 @@
 import requests
 
-api_key = "39e8a1f0052f8a49c98db69baac9e216"
+from api_key import API_KEY as key
+from translate import Translator
 
-response = requests.get(f'https://favqs.com/api/qotd', headers={'Authorization': f'Token token={api_key}'})
+
+response = requests.get(f'https://favqs.com/api/qotd', headers={'Authorization': f'Token token={key}'})
 quote = response.json()
-print(quote)
+phrase = quote["quote"]["body"]
+
+print(phrase)
+
+
+
+translator = Translator(to_lang='en')
+translation = translator.translate("Hola mundo")
+print(translation)
+
+
+
